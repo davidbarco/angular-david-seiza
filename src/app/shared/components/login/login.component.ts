@@ -29,9 +29,9 @@ export class LoginComponent {
       const {email, password} = this.form.getRawValue();
       console.log(email, password)
       setTimeout(() => {
-        this.form.reset();
-        this.procesando = false;
         this.router.navigateByUrl('/app/dashboard');
+        this.procesando = false;
+        this.form.reset();
       }, 2000);
 
     }
