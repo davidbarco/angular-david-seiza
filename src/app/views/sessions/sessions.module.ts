@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { ButtonGeneralComponent } from 'src/app/shared/components/button-general/button-general.component';
 
 
 
@@ -23,7 +24,8 @@ import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     SessionSigninComponent,
-    LoginComponent
+    LoginComponent,
+    ButtonGeneralComponent
   ],
   imports: [
     CommonModule,

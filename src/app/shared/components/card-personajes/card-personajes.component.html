@@ -1,0 +1,26 @@
+<div *ngFor="let mascota of mascotas" class="flex flex-col items-center h-[250px] rounded bg-blue-900 dark:bg-gray-800 m-2 w-[150px]">
+  <div class="w-full flex justify-end">
+    <div class="mr-1">
+      <button mat-icon-button [matMenuTriggerFor]="accionesMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <mat-menu #accionesMenu="matMenu">
+    <div mat-menu-item style="border-bottom: 1px solid #122B3633!important;">
+      <div class="flex">
+        <button class="font-medium text-base leading-[22px] h-[22px] cursor-pointer text-[#122B36]">Detalle</button>
+      </div>
+    </div>
+
+    <div mat-menu-item (click)="eliminar(mascota)">
+      <div class="flex">
+        <button class="font-medium text-base leading-[22px] h-[22px] cursor-pointer text-[#E41D2C]">Eliminar</button>
+      </div>
+    </div>
+</mat-menu>
+   <img [src]='mascota.image' class="mb-5 text-2xl text-gray-400 dark:text-gray-500 rounded-full bg-blue-500 h-28 w-28">
+   <p class="mb-4">{{mascota.name | slice:0:17}}{{mascota.name.length > 20 ? '...' : ''}}</p>
+   <p class="mb-4">{{mascota.status}}</p>
+</div>

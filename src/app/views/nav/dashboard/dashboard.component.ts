@@ -20,8 +20,4 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  eliminar(mascotas: any){
-    console.log(mascotas)
-  }
-
 }

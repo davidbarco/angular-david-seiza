@@ -1,0 +1,8 @@
+<button mat-raised-button color="primary" [disabled]="disabled  || processing" type="submit" style="width: 100%;">
+  <ng-container *ngIf="processing; else content">
+    <mat-spinner diameter="20"></mat-spinner>
+  </ng-container>
+  <ng-template #content>
+    Ingresar
+  </ng-template>
+</button>

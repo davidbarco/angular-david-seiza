@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavRoutingModule } from './nav-routing.module';
 import { TableCharacterComponent } from './table-character/table-character.component';
+import { CardPersonajesComponent } from 'src/app/shared/components/card-personajes/card-personajes.component';
 
 
 
@@ -21,6 +22,7 @@ import { TableCharacterComponent } from './table-character/table-character.compo
   declarations: [
     DashboardComponent,
     TableCharacterComponent,
+    CardPersonajesComponent
   ],
   imports: [
     NavRoutingModule,
