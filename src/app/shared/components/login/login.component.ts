@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AutService } from '../../services/aut.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AutService
   ){
 
   }
@@ -25,17 +27,28 @@ export class LoginComponent {
   iniciarSesion(){
     if (this.form.valid) {
       this.procesando = true;
-      //this.status = 'loading';
       const {email, password} = this.form.getRawValue();
-      console.log(email, password)
-      setTimeout(() => {
-        this.router.navigateByUrl('/app/dashboard');
-        this.procesando = false;
-        this.form.reset();
-      }, 2000);
+     /*  "email": "john@mail.com",
+         "password": "changeme" */
 
+      this.authService.login(email, password).subscribe({
+        next: (data) => {
+          console.log(data);
+          this.authService.setAccessToken(data.access_token);
+        },
+        error: (error) => {
+          console.error(error);
+          this.procesando = false;
+          alert("credenciales invalidas")
+        },
+        complete: () => {
+          this.router.navigateByUrl('/app/dashboard');
+          this.procesando = false;
+        }
+      });
+    }else{
+      this.form.markAllAsTouched();
     }
-    this.form.markAllAsTouched();
   }
 
 }
