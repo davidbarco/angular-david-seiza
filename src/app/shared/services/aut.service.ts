@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,16 @@ export class AutService {
 
   renewAccessToken(refreshToken: string): Observable<any> {
     // Realiza una solicitud al backend para renovar el token
-    return this.http.post(`${this.apiUrl}/refresh-token`, refreshToken);
+    return this.http.post(`${this.apiUrl}/refresh-token`, {refreshToken})
+    .pipe(
+      tap((response: any) => {
+        //console.log(response)
+        if (response && response.access_token && response.refresh_token) {
+          // Si la renovación fue exitosa, actualiza los tokens almacenados
+          this.setAccessToken(response.access_token, response.refresh_token);
+        }
+      }),
+    );
   }
 
 }
