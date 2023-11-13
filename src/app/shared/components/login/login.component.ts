@@ -8,7 +8,7 @@ import { AutService } from '../../services/aut.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent { 
   procesando: boolean = false;
 
   constructor(
