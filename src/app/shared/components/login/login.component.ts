@@ -34,7 +34,7 @@ export class LoginComponent {
       this.authService.login(email, password).subscribe({
         next: (data) => {
           console.log(data);
-          this.authService.setAccessToken(data.access_token);
+          this.authService.setAccessToken(data.access_token, data.refresh_token);
         },
         error: (error) => {
           console.error(error);

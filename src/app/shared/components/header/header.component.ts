@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { initFlowbite } from 'flowbite'
 
 
@@ -9,11 +10,19 @@ import { initFlowbite } from 'flowbite'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    public router: Router
+  ) {}
 
   ngOnInit(): void {
     initFlowbite();
 
+  }
+
+  cerrarSesion(){
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    this.router.navigateByUrl('/signin');
   }
 
 }

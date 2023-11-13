@@ -17,10 +17,10 @@ export class AutService {
     return this.http.post(`${this.apiUrl}/login`, body);
   }
 
-  setAccessToken(token: string) {
-    this.accessToken = token;
+  setAccessToken(token: string, refresh_token: string) {
     // Almacena el token en localStorage.
     localStorage.setItem('access_token', token);
+    localStorage.setItem('refresh_token', refresh_token);
   }
 
   getAccessToken(): string {
